@@ -71,9 +71,9 @@ But wait: we also want the whole donut to spin around on at least two more axes 
 
 Churning through the above gets us an (x,y,z) point on the surface of our torus, rotated around two axes, centered at the origin. To actually get screen coordinates, we need to:
 
-    - Move the torus somewhere in front of the viewer (the viewer is at the origin) — so we just add some constant to z to move it backward.
-    - Project from 3D onto our 2D screen.
-
+   - Move the torus somewhere in front of the viewer (the viewer is at the origin) — so we just add some constant to z to move it backward.
+   - Project from 3D onto our 2D screen.
+    
 So we have another constant to pick, call it K2, for the distance of the donut from the viewer, and our projection now looks like:
 
 ![image](https://user-images.githubusercontent.com/86287920/205481111-49f05707-886c-4178-b0c9-b00fb24ca177.png)
@@ -94,7 +94,7 @@ The derivation of the surface normal direction turns out to be pretty much the s
 
 So our surface normal (Nx, Ny, Nz) is derived the same as above, except the point we start with is just (cos θ, sin θ, 0). Then we apply the same rotations:
 
-![image](https://user-images.githubusercontent.com/86287920/205481131-1736fe7f-b0f0-4ba7-87db-91ebdca4a408.png)
+![image](https://user-images.githubusercontent.com/86287920/205481209-e13dfa0d-5770-41d6-bd79-432912976d6f.png)
 
 So which lighting direction should we choose? How about we light up surfaces facing behind and above the viewer: (0,1,−1). Technically this should be a normalized unit vector, and this vector has a magnitude of √2. That’s okay – we will compensate later. Therefore we compute the above (x,y,z), throw away the x and get our luminance L = y-z.
 
